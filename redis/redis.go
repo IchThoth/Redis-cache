@@ -22,17 +22,17 @@ func NewRedis() Redis {
 
 	RedisPassword := os.Getenv("REDIS_PASSWORD")
 
-	var client = redis.NewClient(&redis.Options{
+	var Client = redis.NewClient(&redis.Options{
 		// Container name + port since we are using docker
 		Addr:     "redis:6379",
 		Password: RedisPassword,
 	})
 
-	if client == nil {
+	if Client == nil {
 		errors.New("Cannot run redis")
 	}
 
 	return Redis{
-		RedisClient: *client,
+		RedisClient: *Client,
 	}
 }
